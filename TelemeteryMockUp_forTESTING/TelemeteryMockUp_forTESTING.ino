@@ -41,7 +41,6 @@ void Transmit_data (){
   toradio += ",";
   toradio += temp;
   toradio += ",";
-  toradio += ".";
   toradio += voltage;
   toradio += ",";
   toradio += GPS_lat;
@@ -62,4 +61,7 @@ void Transmit_data (){
   toradio += ",";
   toradio += state;
   Serial.println (toradio);
+
+
+  
 }
