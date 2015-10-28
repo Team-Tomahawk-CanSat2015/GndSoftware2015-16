@@ -1,0 +1,22 @@
+Buttons Needed By Ground Software with functanolity.
+
+1a. Connect Button
+1b. Com Text Box
+Function: To connect to radio or arduino signinature.
+# Research help
+# Matlab Serial Ports connection
+
+2a. Text for servo control
+2b. Sert Servo Button -> "%Servoangle [0 180]" ie "%45"
+2c. Slider for servo angle change
+# Research help:
+# write text to device through serial
+
+3a. Eject Button -> "&"
+# Research help:
+# write text to device through serial
+
+4. Take a picture -> "#" 
+fprintf (arduino or Radio, string);
+# Research help:
+# write text to device thro
