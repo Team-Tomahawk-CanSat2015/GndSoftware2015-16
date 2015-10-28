@@ -19,4 +19,5 @@ Function: To connect to radio or arduino signinature.
 4. Take a picture -> "#" 
 fprintf (arduino or Radio, string);
 # Research help:
-# write text to device thro
+# write text to device through serial port
+
