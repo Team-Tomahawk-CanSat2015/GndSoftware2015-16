@@ -22,7 +22,7 @@ function varargout = gs2015(varargin)
 
 % Edit the above text to modify the response to help gs2015
 
-% Last Modified by GUIDE v2.5 05-Oct-2015 16:31:12
+% Last Modified by GUIDE v2.5 29-Oct-2015 06:31:07
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -60,6 +60,10 @@ guidata(hObject, handles);
 
 % UIWAIT makes gs2015 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
+
+%Team Tomahawk Logo addition
+axes (handles.logo);
+imshow ('Team_Tomahawk_logo.JPG');
 
 
 % --- Outputs from this function are returned to the command line.
@@ -255,9 +259,9 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton4.
-function pushbutton4_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton4 (see GCBO)
+% --- Executes on button press in Set_Servo.
+function Set_Servo_Callback(hObject, eventdata, handles)
+% hObject    handle to Set_Servo (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
