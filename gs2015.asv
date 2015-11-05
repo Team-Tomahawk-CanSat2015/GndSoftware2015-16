@@ -133,7 +133,6 @@ function popupmenu3_Callback(hObject, eventdata, handles)
 %        contents{get(hObject,'Value')} returns selected item from popupmenu3
 
 
-
 % --- Executes during object creation, after setting all properties.
 function popupmenu3_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to popupmenu3 (see GCBO)
@@ -176,9 +175,8 @@ function connectbotton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 %display (get (handles.comporttext, 'String'));
-global ard;
-comport = get(handles.comporttext,'String');
-ard = ConnectButtonfunc(comport);
+comport = get(handles.comporttext, 'String');
+ConnectButtonfunc(compo);
 
 
 % --- Executes on button press in pushbutton2.
