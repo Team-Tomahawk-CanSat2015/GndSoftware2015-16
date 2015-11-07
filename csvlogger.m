@@ -10,7 +10,8 @@ else
     %display ('New data is available in Serial port');
     %If new data is avilable
     %csvfile = fopen(csvfilelog, 'a+'); %We only open close and open files once!! in the Connect or disconnect button call back
-    StringFromSerial = fscanf(ard, '%s') %Get new data to string variable
+    StringFromSerial = fscanf(ard, '%s'); %Get new data to string variable
+    fprintf ('%s\n',StringFromSerial);
     fprintf(csvfile, strcat(StringFromSerial, '\r\n'));%append string variable to file
     
     %%

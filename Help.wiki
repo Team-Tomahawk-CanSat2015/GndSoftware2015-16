@@ -1,0 +1,25 @@
+---------------------------------------------------------------
+## SECTION 1 -- Intro
+# This is the helper file for the Ryerson Cansat teams GCS 2015-2016.
+# GCS Means the ground control Software.
+# This ground control software was made in order to comply with the Competition
+# mission requirements. see www.cansatcompetition.com
+# This was designed using MATLAB 2014b
+##
+-----------------------------------------------------------------
+## SECTION 2 -- How to use --- :)
+# 1. Connect  Serial device to USB port of system
+# 2. Beside the 'Connect to:' Button Specify Comport to connect to.
+# 3. Click 'Connect to:'
+# 4. Notice, on the main MATLAB command window the data received is being printed out. 
+# 5. GCS works with CAnsat flight software Tforee you can take pics and set servo pos ...\
+# 6. Enjoy!!
+##
+-----------------------------------------------------------------
+## SECTION 3 -- Build Algorithm
+#   -- Vlad and Sahab Can any of you fill this like a wiki. any contribution is good :)
+# 
+#
+#
+##
+-----------------------------------------------------------------
