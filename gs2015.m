@@ -22,7 +22,7 @@ function varargout = gs2015(varargin)
 
 % Edit the above text to modify the response to help gs2015
 
-% Last Modified by GUIDE v2.5 06-Nov-2015 07:48:55
+% Last Modified by GUIDE v2.5 08-Nov-2015 09:32:16
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -67,6 +67,12 @@ imshow ('Team_Tomahawk_logo.JPG');
 %CAnada Flag Logo addition
 axes (handles.CanadaFlag);
 imshow ('CanadaFlag.png');
+
+%Setup Comport selection popup
+Allportsobj  = instrhwinfo('serial');
+Allports = Allportsobj.SerialPorts;
+set (handles.ComportPopup, 'String', Allports);
+set (handles.ComportPopup, 'Value', numel (Allports));
 
 
 % --- Outputs from this function are returned to the command line.
@@ -180,20 +186,22 @@ function connectbotton_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 %display (get (handles.comporttext, 'String'));
 global ard;
-comport = get(handles.comporttext,'String');
-ard = ConnectButtonfunc(comport);
+selectedPort = get(handles.ComportPopup,'Value');
+Portlist = get(handles.ComportPopup,'String');
+comport = Portlist{selectedPort};
+ard = ConnectButtonfunc(comport, handles);
 
 
-% --- Executes on button press in pushbutton2.
-function pushbutton2_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton2 (see GCBO)
+% --- Executes on button press in TakePictureButton.
+function TakePictureButton_Callback(hObject, eventdata, handles)
+% hObject    handle to TakePictureButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
+% --- Executes on button press in NichromeBurnButton.
+function NichromeBurnButton_Callback(hObject, eventdata, handles)
+% hObject    handle to NichromeBurnButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
@@ -242,7 +250,6 @@ function edit2_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
 
 
 function edit3_Callback(hObject, eventdata, handles)
@@ -343,16 +350,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-
-function edit4_Callback(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit4 as text
-%        str2double(get(hObject,'String')) returns contents of edit4 as a double
-
-
 % --- Executes during object creation, after setting all properties.
 function edit4_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit4 (see GCBO)
@@ -371,10 +368,71 @@ function StopTimer_Callback(hObject, eventdata, handles)
 % hObject    handle to StopTimer (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+StopTimerButtonfunc();
 
 % --- Executes on button press in Help.
 function Help_Callback(hObject, eventdata, handles)
 % hObject    handle to Help (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+open ('Help.wiki.htm');
+
+
+% --- Executes on selection change in ComportPopup.
+function ComportPopup_Callback(hObject, eventdata, handles)
+% hObject    handle to ComportPopup (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns ComportPopup contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from ComportPopup
+Allportsobj  = instrhwinfo('serial');
+Allports = Allportsobj.SerialPorts;
+set (handles.ComportPopup, 'String', Allports);
+set (handles.ComportPopup, 'Value', numel (Allports));
+
+
+% --- Executes during object creation, after setting all properties.
+function ComportPopup_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to ComportPopup (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on key press with focus on ComportPopup and none of its controls.
+function ComportPopup_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to ComportPopup (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+Allportsobj  = instrhwinfo('serial');
+Allports = Allportsobj.SerialPorts;
+set (handles.ComportPopup, 'String', Allports);
+set (handles.ComportPopup, 'Value', numel (Allports));
+
+
+% --------------------------------------------------------------------
+function uipanel2_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to uipanel2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Allportsobj  = instrhwinfo('serial');
+Allports = Allportsobj.SerialPorts;
+set (handles.ComportPopup, 'String', Allports);
+set (handles.ComportPopup, 'Value', numel (Allports));
+
+
+% --- Executes during object deletion, before destroying properties.
+function figure1_DeleteFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+StopTimerButtonfunc();

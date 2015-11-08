@@ -1,4 +1,4 @@
-function [ard] = ConnectButtonfunc(comport)
+function [ard] = ConnectButtonfunc(comport, handles)
 %   This file is called when the connect button is clicked on main GUI
 %   This file performs the following tasks:
 %   1. Open Serial port from comport input variable
@@ -29,7 +29,7 @@ delete (timerfindall); %Delete all timer objects
 csvfilename = datestr(datetime); %Get date and time for name of new file
 csvfilename = strrep(csvfilename, ':', '_')
 csvfile = fopen(strcat (csvfilename,'.csv'), 'a+'); %Open Csv file, only once we need to do this
-onesecCSVlogger = timer('TimerFcn',{@csvlogger, ard, csvfile},... 
+onesecCSVlogger = timer('TimerFcn',{@LoopTimer_1s, ard, csvfile, handles},... 
                         'ExecutionMode','fixedRate','Period', 1); 
 %Call csvlogger function every 1 sec period with ard(Serial port) and csvfilelog (name of csv file) as input 
 start (onesecCSVlogger);
