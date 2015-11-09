@@ -10,7 +10,7 @@ float GPS_lat = 79.12345;//7.
 float GPS_lon = 33.12345;//8.
 float GPS_alt = 500.11;//9.
 float GPS_satnum = 6;//10.
-float GPS_speed;//11.
+float GPS_speed = 21;//11.
 float CMD_time = 30;//12.
 float CMD_count = 6;//13.
 unsigned int ServoPos = 160; //14

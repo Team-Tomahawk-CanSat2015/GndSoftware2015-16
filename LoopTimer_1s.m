@@ -1,4 +1,4 @@
-function LoopTimer_1s(src, evt, ard, csvfile, handles)
+function LoopTimer_1s(src, evt, ard, csvfile, handles, table_filename)
 %%
 %   Function performs the following tasks:
 %   1. If No new serial data is avilable function does nothing
@@ -13,23 +13,21 @@ else
     StringFromSerial = fscanf(ard, '%s'); %Get new data to string variable
     fprintf ('%s\n',StringFromSerial);
     fprintf(csvfile, strcat(StringFromSerial, '\r\n'));%append string variable to file
-    arrayFromSerial = str2num (StringFromSerial); 
     %%
     %Update Functions must be below to minimize timer objects
     %This section is called every 1 sec, Therefore plots are updates 1sec
     %'StringFromSerial' variable contains new lines of serial string from radio
     %So you can use new data to plot..... :)
-    
+
     Update_GUIDateTimeDisplay(handles);
-    %Update_GUItable(handles, StringFromSerial);
-    %Update_GUIgraph(handles, StringFromSerial);
-    
+    Update_GUItable(handles, table_filename);
+    %Update_GUIgraph(handles, table_filename);
     
     %%
     
     %fclose(csvfile); %We only open close and open files once!! in the Connect or disconnect button call back  
 end 
-
+    %%
 
 
 

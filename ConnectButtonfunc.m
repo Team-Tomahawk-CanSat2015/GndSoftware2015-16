@@ -28,8 +28,9 @@ msgbox ('Serial Connected!!,,yah!');  %Indicate connection ws a sucess
 delete (timerfindall); %Delete all timer objects
 csvfilename = datestr(datetime); %Get date and time for name of new file
 csvfilename = strrep(csvfilename, ':', '_')
+table_filename = csvfilename;
 csvfile = fopen(strcat (csvfilename,'.csv'), 'a+'); %Open Csv file, only once we need to do this
-onesecCSVlogger = timer('TimerFcn',{@LoopTimer_1s, ard, csvfile, handles},... 
+onesecCSVlogger = timer('TimerFcn',{@LoopTimer_1s, ard, csvfile, handles, table_filename},... 
                         'ExecutionMode','fixedRate','Period', 1); 
 %Call csvlogger function every 1 sec period with ard(Serial port) and csvfilelog (name of csv file) as input 
 start (onesecCSVlogger);

@@ -22,7 +22,7 @@ function varargout = gs2015(varargin)
 
 % Edit the above text to modify the response to help gs2015
 
-% Last Modified by GUIDE v2.5 08-Nov-2015 12:17:33
+% Last Modified by GUIDE v2.5 08-Nov-2015 14:40:42
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -67,7 +67,6 @@ imshow ('Team_Tomahawk_logo.JPG');
 %CAnada Flag Logo addition
 axes (handles.CanadaFlag);
 imshow ('CanadaFlag.png');
-
 %Setup Comport selection popup
 ScanCOMPorts(handles);
 
@@ -129,20 +128,51 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on selection change in popupmenu3.
-function popupmenu3_Callback(hObject, eventdata, handles)
-% hObject    handle to popupmenu3 (see GCBO)
+% --- Executes on selection change in graph1xaxis.
+function graph1xaxis_Callback(hObject, eventdata, handles)
+% hObject    handle to graph1xaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu3 contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from popupmenu3
+% Hints: contents = cellstr(get(hObject,'String')) returns graph1xaxis contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from graph1xaxis
+% axes(handles.Graph1);
+% str1 = get(hObject,'String');
+% val1 = get(hObject,'Value');
+% switch str1{val1};
+%     case 'Time'
+%         handles.current_datax = handles.time;
+%     case 'Pressure Alt.'
+%         handles.current_datax = handles.PresAlt;
+%     case 'Pitot Speed'
+%         handles.current_datax = handles.Pitot_speed;
+%     case 'Temperature'
+%         handles.current_datax = handles.temp;
+%     case 'Voltage' 
+%         handles.current_datax = handles.voltage;
+%     case 'GPS Latitude'
+%         handles.current_datax = handles.GPS_lat;
+%     case 'GPS Longitude'
+%         handles.current_datax = handles.GPS_long;
+%     case 'GPS Altitude'
+%         handles.current_datax = handles.GPS_alt;
+%     case 'GPS Satnum'
+%         handles.current_datax = handles.GPS_satnum;
+%     case 'GPS Speed'
+%         handles.current_datax = handles.GPS_speed;
+% end
+% guidata(handles.graph1yaxis, handles.current_datax);
+% plot(handles.current_datax, handles.current_datay, 'o-');
+axes(handles.Graph1);
+
+
+
 
 
 
 % --- Executes during object creation, after setting all properties.
-function popupmenu3_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu3 (see GCBO)
+function graph1xaxis_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to graph1xaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -258,6 +288,7 @@ function edit3_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of edit3 as a double
 
 
+
 % --- Executes during object creation, after setting all properties.
 function edit3_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit3 (see GCBO)
@@ -278,19 +309,46 @@ function Set_Servo_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on selection change in popupmenu5.
-function popupmenu5_Callback(hObject, eventdata, handles)
-% hObject    handle to popupmenu5 (see GCBO)
+% --- Executes on selection change in graph1yaxis.
+function graph1yaxis_Callback(hObject, eventdata, handles)
+% hObject    handle to graph1yaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu5 contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from popupmenu5
+% Hints: contents = cellstr(get(hObject,'String')) returns graph1yaxis contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from graph1yaxis
+% axes(handles.Graph1);
+% str = get(hObject,'String');
+% val = get(hObject,'Value');
+% switch str{val};
+%     case 'Time'
+%         handles.current_datay = handles.time;
+%     case 'Pressure Alt.'
+%         handles.current_datay = handles.PresAlt;
+%     case 'Pitot Speed'
+%         handles.current_datay = handles.Pitot_speed;
+%     case 'Temperature'
+%         handles.current_datay = handles.temp;
+%     case 'Voltage' 
+%         handles.current_datay = handles.voltage;
+%     case 'GPS Latitude'
+%         handles.current_datay = handles.GPS_lat;
+%     case 'GPS Longitude'
+%         handles.current_datay = handles.GPS_long;
+%     case 'GPS Altitude'
+%         handles.current_datay = handles.GPS_alt;
+%     case 'GPS Satnum'
+%         handles.current_datay = handles.GPS_satnum;
+%     case 'GPS Speed'
+%         handles.current_datay = handles.GPS_speed;
+% end
+% guidata(handles.graph1xaxis, handles.current_datay);
+% plot(handles.current_datax, handles.current_datay, 'o-');
 
 
 % --- Executes during object creation, after setting all properties.
-function popupmenu5_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu5 (see GCBO)
+function graph1yaxis_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to graph1yaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -447,3 +505,45 @@ function Note1_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes when entered data in editable cell(s) in uitable1.
+function uitable1_CellEditCallback(hObject, eventdata, handles)
+% hObject    handle to uitable1 (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
+%	Indices: row and column indices of the cell(s) edited
+%	PreviousData: previous data for the cell(s) edited
+%	EditData: string(s) entered by the user
+%	NewData: EditData or its converted form set on the Data property. Empty if Data was not changed
+%	Error: error string when failed to convert EditData to appropriate value for Data
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function Graph1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to Graph1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+% Hint: place code in OpeningFcn to populate Graph1
+handles.Graph1=hObject; % tag for this axis, which I call axesX in this example
+guidata(hObject, handles); % update the handles structure for the gui
+
+% --- Executes during object creation, after setting all properties.
+function Graph2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to Graph2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+% Hint: place code in OpeningFcn to populate Graph2
+handles.Graph2=hObject; % tag for this axis, which I call axesX in this example
+guidata(hObject, handles); % update the handles structure for the gui
+
+
+% --- Executes when selected cell(s) is changed in uitable1.
+function uitable1_CellSelectionCallback(hObject, eventdata, handles)
+% hObject    handle to uitable1 (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
+%	Indices: row and column indices of the cell(s) currently selecteds
+% handles    structure with handles and user data (see GUIDATA)
+
+
+
