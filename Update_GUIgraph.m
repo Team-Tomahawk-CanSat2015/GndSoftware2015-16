@@ -1,11 +1,17 @@
 function [] = Update_GUIgraph(handles, table_filename)
 
-%takes the name of the most recent CSV file and displays it in the table
-%with updated values
-extension = '.csv';
-table_filename = strcat(table_filename, extension);
-data = csvread(table_filename);
+handles.Table_data = get(handles.uitable1, 'Data');
 
+handles.time = handles.Table_data(1,:);
+handles.PresAlt = handles.Table_data(2,:);
+handles.Pitot_speed = handles.Table_data(3,:);
+handles.temp = handles.Table_data(4, :);
+handles.voltage = handles.Table_data(5,:);
+handles.GPS_lat =handles.Table_data(6,:);
+handles.GPS_long = handles.Table_data(7,:);
+handles.GPS_alt = handles.Table_data(8,:);
+handles.GPS_satnum = handles.Table_data(9,:);
+handles.GPS_speed = handles.Table_data(10,:);
 
-axes(handles.Graph1);
-plot(data(:,2), data(:,4));
+guidata(handles.graph1xaxis, handles);
+guidata(handles.graph1yaxis, handles);
