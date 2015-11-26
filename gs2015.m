@@ -22,7 +22,7 @@ function varargout = gs2015(varargin)
 
 % Edit the above text to modify the response to help gs2015
 
-% Last Modified by GUIDE v2.5 09-Nov-2015 21:22:51
+% Last Modified by GUIDE v2.5 25-Nov-2015 20:02:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -70,10 +70,8 @@ imshow ('CanadaFlag.png');
 %populate graph
 axes (handles.Graph1);
 % Table_data = get(handles.uitable1, 'Data');
-handles.graph1xaxis = 0;
-handles.current_datay = 0;
-plot(handles.graph1xaxis, handles.current_datay, 'o-');
 
+guidata(hObject, handles);
 %Setup Comport selection popup
 ScanCOMPorts(handles);
 
@@ -260,19 +258,19 @@ function Set_Servo_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on selection change in popupmenu6.
-function popupmenu6_Callback(hObject, eventdata, handles)
-% hObject    handle to popupmenu6 (see GCBO)
+% --- Executes on selection change in graph2xaxis.
+function graph2xaxis_Callback(hObject, eventdata, handles)
+% hObject    handle to graph2xaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu6 contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from popupmenu6
+% Hints: contents = cellstr(get(hObject,'String')) returns graph2xaxis contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from graph2xaxis
 
 
 % --- Executes during object creation, after setting all properties.
-function popupmenu6_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu6 (see GCBO)
+function graph2xaxis_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to graph2xaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -283,19 +281,19 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on selection change in popupmenu7.
-function popupmenu7_Callback(hObject, eventdata, handles)
-% hObject    handle to popupmenu7 (see GCBO)
+% --- Executes on selection change in graph2yaxis.
+function graph2yaxis_Callback(hObject, eventdata, handles)
+% hObject    handle to graph2yaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu7 contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from popupmenu7
+% Hints: contents = cellstr(get(hObject,'String')) returns graph2yaxis contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from graph2yaxis
 
 
 % --- Executes during object creation, after setting all properties.
-function popupmenu7_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu7 (see GCBO)
+function graph2yaxis_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to graph2yaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -458,32 +456,32 @@ function graph1xaxis_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns graph1xaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph1xaxis
-axes(handles.Graph1);
-str1 = get(hObject,'String');
-val1 = get(hObject,'Value');
-switch str1{val1};
-    case 'Time'
-        handles.graph1xaxis = handles.time;
-    case 'Pressure Alt.'
-        handles.graph1xaxis = handles.PresAlt;
-    case 'Pitot Speed'
-        handles.graph1xaxis = handles.Pitot_speed;
-    case 'Temperature'
-        handles.graph1xaxis = handles.temp;
-    case 'Voltage' 
-        handles.graph1xaxis = handles.voltage;
-    case 'GPS Latitude'
-        handles.graph1xaxis = handles.GPS_lat;
-    case 'GPS Longitude'
-        handles.graph1xaxis = handles.GPS_long;
-    case 'GPS Altitude'
-        handles.graph1xaxis = handles.GPS_alt;
-    case 'GPS Satnum'
-        handles.graph1xaxis = handles.GPS_satnum;
-    case 'GPS Speed'
-        handles.graph1xaxis = handles.GPS_speed;
-end
-guidata(hObject, handles);
+% axes(handles.Graph1);
+% str1 = get(hObject,'String');
+% val1 = get(hObject,'Value');
+% switch str1{val1};
+%     case 'Time'
+%         handles.graph1xaxis = handles.time;
+%     case 'Pressure Alt.'
+%         handles.graph1xaxis = handles.PresAlt;
+%     case 'Pitot Speed'
+%         handles.graph1xaxis = handles.Pitot_speed;
+%     case 'Temperature'
+%         handles.graph1xaxis = handles.temp;
+%     case 'Voltage' 
+%         handles.graph1xaxis = handles.voltage;
+%     case 'GPS Latitude'
+%         handles.graph1xaxis = handles.GPS_lat;
+%     case 'GPS Longitude'
+%         handles.graph1xaxis = handles.GPS_long;
+%     case 'GPS Altitude'
+%         handles.graph1xaxis = handles.GPS_alt;
+%     case 'GPS Satnum'
+%         handles.graph1xaxis = handles.GPS_satnum;
+%     case 'GPS Speed'
+%         handles.graph1xaxis = handles.GPS_speed;
+% end
+% guidata(hObject, handles);
 
 % --- Executes during object creation, after setting all properties.
 function graph1xaxis_CreateFcn(hObject, eventdata, handles)
@@ -506,32 +504,32 @@ function graph1yaxis_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns graph1yaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph1yaxis
-axes(handles.Graph1);
-str1 = get(hObject,'String');
-val1 = get(hObject,'Value');
-switch str1{val1};
-    case 'Time'
-        handles.graph1yaxis = handles.time;
-    case 'Pressure Alt.'
-        handles.graph1yaxis = handles.PresAlt;
-    case 'Pitot Speed'
-        handles.graph1yaxis = handles.Pitot_speed;
-    case 'Temperature'
-        handles.graph1yaxis = handles.temp;
-    case 'Voltage' 
-        handles.graph1yaxis = handles.voltage;
-    case 'GPS Latitude'
-        handles.graph1yaxis = handles.GPS_lat;
-    case 'GPS Longitude'
-        handles.graph1yaxis = handles.GPS_long;
-    case 'GPS Altitude'
-        handles.graph1yaxis = handles.GPS_alt;
-    case 'GPS Satnum'
-        handles.graph1yaxis = handles.GPS_satnum;
-    case 'GPS Speed'
-        handles.graph1yaxis = handles.GPS_speed;
-end
-guidata(hObject, handles);
+% axes(handles.Graph1);
+% str1 = get(hObject,'String');
+% val1 = get(hObject,'Value');
+% switch str1{val1};
+%     case 'Time'
+%         handles.graph1yaxis = handles.time;
+%     case 'Pressure Alt.'
+%         handles.graph1yaxis = handles.PresAlt;
+%     case 'Pitot Speed'
+%         handles.graph1yaxis = handles.Pitot_speed;
+%     case 'Temperature'
+%         handles.graph1yaxis = handles.temp;
+%     case 'Voltage' 
+%         handles.graph1yaxis = handles.voltage;
+%     case 'GPS Latitude'
+%         handles.graph1yaxis = handles.GPS_lat;
+%     case 'GPS Longitude'
+%         handles.graph1yaxis = handles.GPS_long;
+%     case 'GPS Altitude'
+%         handles.graph1yaxis = handles.GPS_alt;
+%     case 'GPS Satnum'
+%         handles.graph1yaxis = handles.GPS_satnum;
+%     case 'GPS Speed'
+%         handles.graph1yaxis = handles.GPS_speed;
+% end
+% guidata(hObject, handles);
 
 % --- Executes during object creation, after setting all properties.
 function graph1yaxis_CreateFcn(hObject, eventdata, handles)

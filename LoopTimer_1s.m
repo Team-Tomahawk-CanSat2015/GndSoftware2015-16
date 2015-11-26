@@ -21,7 +21,7 @@ else
 
     Update_GUIDateTimeDisplay(handles);
     Update_GUItable(handles, table_filename);
-    %Update_GUIgraph(handles, table_filename);
+    Update_GUIgraph(handles, table_filename);
     
     %%
     
