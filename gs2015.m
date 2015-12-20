@@ -22,7 +22,7 @@ function varargout = gs2015(varargin)
 
 % Edit the above text to modify the response to help gs2015
 
-% Last Modified by GUIDE v2.5 25-Nov-2015 20:02:49
+% Last Modified by GUIDE v2.5 19-Dec-2015 14:29:26
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -206,18 +206,18 @@ end
 
 
 
-function edit2_Callback(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
+function servo_angle_Callback(hObject, eventdata, handles)
+% hObject    handle to servo_angle (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit2 as text
-%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+% Hints: get(hObject,'String') returns contents of servo_angle as text
+%        str2double(get(hObject,'String')) returns contents of servo_angle as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
+function servo_angle_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to servo_angle (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -252,10 +252,23 @@ end
 
 
 % --- Executes on button press in Set_Servo.
-function Set_Servo_Callback(hObject, eventdata, handles)
+function Set_Servo_Callback(hObject, eventdata, handles) 
+global ard;
 % hObject    handle to Set_Servo (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+angle = get(handles.servo_angle, 'String');
+% angle = str2num(angle);
+fprintf(ard, angle);
+% ard.BytesAvailableFcnMode = 'byte';
+% ard.Terminator = 'CR';
+% try
+%     ard.BytesAvailable
+%     fprintf(ard, angle);
+% catch problem
+%     display('Problem Caught');
+% end 
+    
 
 
 % --- Executes on selection change in graph2xaxis.

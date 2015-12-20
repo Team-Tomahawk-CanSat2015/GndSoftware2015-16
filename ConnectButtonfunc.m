@@ -11,7 +11,7 @@ delete (instrfind);
 ard = serial(comport);
 set (ard, 'DataBits', 8);
 set (ard, 'StopBits', 1);
-set (ard, 'BaudRate', 115200);
+set (ard, 'BaudRate', 19200);
 set (ard, 'Parity', 'none');
 set (ard, 'InputBufferSize', 1000000);
 

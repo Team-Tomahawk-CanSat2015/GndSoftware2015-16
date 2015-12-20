@@ -1,4 +1,5 @@
 //Used to test ground software with random but proper telemetery
+#include <Servo.h>
 //Telemertery data, They are just random
 unsigned int TeamID = 1086; //1. Done
 unsigned long packetID = 0;//2.
@@ -13,17 +14,26 @@ float GPS_satnum = 6;//10.
 float GPS_speed = 21;//11.
 float CMD_time = 30;//12.
 float CMD_count = 6;//13.
-unsigned int ServoPos = 160; //14
+unsigned int ServoPos = 70; //14
 unsigned int state = 0;
-
+Servo servo1;
 void setup() {
-  Serial.begin (115200);
+  servo1.attach(8);
+  Serial.begin (19200);
 }
 
 void loop() {
+
+  String test;
   ++packetID;
   Transmit_data();
-  
+  if(Serial.available() > 0){
+    test= Serial.readString();
+    Serial.println(test);
+    ServoPos = test.toInt();
+    }
+  servo1.write(ServoPos);
+
   delay (1000);
 
 }
