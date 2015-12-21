@@ -16,9 +16,9 @@ float CMD_time = 30;//12.
 float CMD_count = 6;//13.
 unsigned int ServoPos = 70; //14
 unsigned int state = 0;
-Servo servo1;
+//Servo servo1;
 void setup() {
-  servo1.attach(8);
+  //servo1.attach(8);
   Serial.begin (19200);
 }
 
@@ -30,9 +30,9 @@ void loop() {
   if(Serial.available() > 0){
     test= Serial.readString();
     Serial.println(test);
-    ServoPos = test.toInt();
+    packetID = test.toInt();
     }
-  servo1.write(ServoPos);
+  //servo1.write(ServoPos);
 
   delay (1000);
 
