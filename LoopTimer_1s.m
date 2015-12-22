@@ -18,10 +18,13 @@ else
     %This section is called every 1 sec, Therefore plots are updates 1sec
     %'StringFromSerial' variable contains new lines of serial string from radio
     %So you can use new data to plot..... :)
-
+    try
     Update_GUIDateTimeDisplay(handles);
     Update_GUItable(handles, table_filename);
     Update_GUIgraph(handles, table_filename);
+    catch exception
+       display('Invalid Packet, Data logged into C4SV but not plotted'); 
+    end
     
     %%
     
