@@ -18,6 +18,7 @@ unsigned int ServoPos = 70; //14
 unsigned int state = 0;
 
 int img_part = 0; //All images are divided into 5 parts
+int img_name= 0;
 
 
 Servo servo1;
@@ -28,21 +29,24 @@ void setup() {
 }
 
 void loop() {
-
-  String test;
-  ++packetID;
-  Transmit_data(false);
-  if(Serial.available() > 0){
-    test= Serial.readString();
-    Serial.println(test);
-    ServoPos = test.toInt();
-    }
-  servo1.write(ServoPos);
-
-
-  if (millis()% 6){ //Perform Image squence every 6 seconds
+  if (millis()% 6000){ //Perform Image squence every 6 seconds
     ImageSequence(); 
     }
+    
+ else{ //Otherwise act Normal
+   String test;
+   ++packetID;
+   Transmit_data(false);
+   if(Serial.available() > 0){
+     test= Serial.readString();
+     Serial.println(test);
+     ServoPos = test.toInt();
+     }
+  servo1.write(ServoPos);
+ }
+
+
+  
 
   
 
@@ -91,6 +95,22 @@ void Transmit_data (bool image_seq){
 
 
 void ImageSequence(){
+  Transmit_data(true); //Transmission with image sequence next
+
+  Serial.print(",");
+  Serial.print (++img_part);
+  Serial.print(",");
+  Serial.print (img_name); //Image recognizition for GCS
+
+
+  for (int i = 0; i<5; ++i){
+  switch (img_part){
+  Serial.print ()
+
+
+  }
+
+  }
   
   
   
