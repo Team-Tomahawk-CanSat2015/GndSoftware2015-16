@@ -1,137 +1,50 @@
-//Used to test ground software with random but proper telemetery
-#include <Servo.h>
-//Telemertery data, They are just random
-unsigned int TeamID = 1086; //1. Done
-unsigned long packetID = 0;//2.
-float pressure_Alt = 110;//3.
-float pitot_speed = 22.22;//4.
-float temp = 19.20;//5.
-float voltage = 7.5;//6.
-float GPS_lat = 79.12345;//7.
-float GPS_lon = 33.12345;//8.
-float GPS_alt = 500.11;//9.
-float GPS_satnum = 6;//10.
-float GPS_speed = 21;//11.
-float CMD_time = 30;//12.
-float CMD_count = 6;//13.
-unsigned int ServoPos = 70; //14
-unsigned int state = 0;
+#include <SPI.h>
+#include <SD.h>
 
-int img_part = 0; //All images are divided into 5 parts
-int img_name= 0;
-
-
-Servo servo1;
+File myFile;
 
 void setup() {
-  servo1.attach(8);
-  Serial.begin (19200);
+  delay (3000);
+  // Open serial communications and wait for port to open:
+  Serial.begin(19200);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+ // Serial.println("Initializing SD card...");
+  if (!SD.begin(10)) {
+    Serial.println("initialization failed!");
+    return;
+  }
+
+  myFile = SD.open("IMAGE01.JPG");
+  if (myFile) {
+    //Serial.println("IMAGE");
+
+   int packet = 0;
+   
+    int seq = -1;
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+   Serial.print ("1086,");
+   Serial.print (++packet);
+   Serial.print (",21.1,33.5,434,66,4.33,22,344,34,53,24,5,55,542,4,44,3,");
+      for (int c = 0; c<ceil(myFile.size()/14); ++c){
+        if (myFile.available()){
+        byte data = myFile.read();
+        if (data < 16){Serial.print(0);}
+        Serial.print(data, HEX);
+        }
+      }
+      Serial.println ("");
+    }
+    myFile.close();
+  } else {
+    Serial.println("error opening test.txt");
+  }
 }
 
 void loop() {
-  if (millis()% 6000){ //Perform Image squence every 6 seconds
-    ImageSequence(); 
-    }
-    
- else{ //Otherwise act Normal
-   String test;
-   ++packetID;
-   Transmit_data(false);
-   if(Serial.available() > 0){
-     test= Serial.readString();
-     Serial.println(test);
-     ServoPos = test.toInt();
-     }
-  servo1.write(ServoPos);
- }
-
-
-  
-
-  
-
-  delay (1000);
-
+  // nothing happens after setup
 }
-
-
-void Transmit_data (bool image_seq){
-  String toradio = "";
-  toradio += TeamID;
-  toradio += ",";
-  toradio += packetID;
-  toradio += ",";
-  toradio += pressure_Alt;
-  toradio += ",";
-  toradio += pitot_speed;
-  toradio += ",";
-  toradio += temp;
-  toradio += ",";
-  toradio += voltage;
-  toradio += ",";
-  toradio += GPS_lat;
-  toradio += ",";
-  toradio += GPS_lon;
-  toradio += ",";
-  toradio += GPS_alt;
-  toradio += ",";
-  toradio += GPS_satnum;
-  toradio += ",";
-  toradio += GPS_speed;
-  toradio += ",";
-  toradio += CMD_time;
-  toradio += ",";
-  toradio += CMD_count;
-  toradio += ",";
-  toradio += ServoPos;
-  toradio += ",";
-  toradio += state;
-
-  if (image_seq == false)
-  Serial.println (toradio); 
-  else
-  Serial.print (toradio);
-}
-
-
-void ImageSequence(){
-  Transmit_data(true); //Transmission with image sequence next
-
-  Serial.print(",");
-  Serial.print (++img_part);
-  Serial.print(",");
-  Serial.print (img_name); //Image recognizition for GCS
-
-
-  for (int i = 0; i<5; ++i){
-  switch (img_part){
-  Serial.print ()
-
-
-  }
-
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  }
-
-
-
-
-
-
-
-
-
-
 
 
