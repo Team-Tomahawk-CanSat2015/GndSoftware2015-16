@@ -4,6 +4,7 @@ function LoopTimer_1s(src, evt, ard, csvfile, handles, table_filename)
 %   1. If No new serial data is avilable function does nothing
 %   2. if serial data is avilable adds the new data to the .csv file log
 %display ('csvlogger');
+
 if (ard.BytesAvailable <= 0) % If no new data
     display ('No New data in Serial port');
 else
@@ -18,14 +19,14 @@ else
     %This section is called every 1 sec, Therefore plots are updates 1sec
     %'StringFromSerial' variable contains new lines of serial string from radio
     %So you can use new data to plot..... :)
-try 
-   
+% try 
     Update_GUIDateTimeDisplay(handles);
-    Update_GUItable(handles, table_filename);
+    Update_GUItable(handles, table_filename,csvfile);
     Update_GUIgraph(handles, table_filename);
-catch
-    
-end 
+   % Emergency_Release(handles);
+% catch
+%     display('md5#');
+% end 
     
     %%
     

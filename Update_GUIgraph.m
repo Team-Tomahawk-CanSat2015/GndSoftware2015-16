@@ -18,6 +18,19 @@ handles.x2 = handles.Table_data(p,:);
 handles.y2 = handles.Table_data(j,:);
 
 %plot in figure labelled Graph 1 and Graph 2
+    
 plot(handles.x1, handles.y1,'Parent', handles.Graph1);
 plot(handles.x2, handles.y2,'Parent', handles.Graph2);
-end 
+%regression
+% try
+% polyfit(handles.x1, handles.y1, 2);
+% quad_regr = polyfit(1,3).*handles.x1 + polyfit(1,2).*handles.x1 + polyfit(1,1).*handles.x1 ;
+% plot(handles.x1, quad_regr, 'Parent', handles.Graph1);
+% 
+% polyfit(handles.x2, handles.y2, 2);
+% quad_regr = polyfit(1,3).*handles.x2 + polyfit(1,2).*handles.x2 + polyfit(1,1).*handles.x2 ;
+% plot(handles.x2, quad_regr, 'Parent', handles.Graph2);
+% catch
+% end
+
+end

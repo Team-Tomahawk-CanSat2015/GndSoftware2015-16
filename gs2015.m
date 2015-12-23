@@ -173,14 +173,16 @@ function TakePictureButton_Callback(hObject, eventdata, handles)
 % hObject    handle to TakePictureButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+global ard;
+fprintf(ard, '*');
 
 % --- Executes on button press in NichromeBurnButton.
 function NichromeBurnButton_Callback(hObject, eventdata, handles)
 % hObject    handle to NichromeBurnButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+global ard;
+fprintf(ard, '&');
 
 
 function comporttext_Callback(hObject, eventdata, handles)
@@ -259,6 +261,8 @@ global ard;
 % handles    structure with handles and user data (see GUIDATA)
 angle = get(handles.servo_angle, 'String');
 % angle = str2num(angle);
+servo_delimeter = '#';
+angle = strcat(servo_delimeter, angle);
 fprintf(ard, angle);
 % ard.BytesAvailableFcnMode = 'byte';
 % ard.Terminator = 'CR';
@@ -279,7 +283,35 @@ function graph2xaxis_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns graph2xaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph2xaxis
-
+% global ard;
+% if (ard.BytesAvailable<= 0);
+%  str3 = get(hObject,'String');
+%  val3 = get(hObject,'Value');
+%  Data = get(handles.uitable1, 'Data');
+%  switch str3{val3};
+%     case 'Time'
+%         handles.graph2xaxis = Data(1,:);
+%     case 'Pressure Alt.'
+%         handles.graph2xaxis = Data(2,:);
+%     case 'Pitot Speed'
+%         handles.graph2xaxis = Data(3,:);
+%     case 'Temperature'
+%         handles.graph2xaxis = Data(4,:);
+%     case 'Voltage' 
+%         handles.graph2xaxis = Data(5,:);
+%     case 'GPS Latitude'
+%         handles.graph2xaxis = Data(6,:);
+%     case 'GPS Longitude'
+%         handles.graph2xaxis = Data(7,:);
+%     case 'GPS Altitude'
+%         handles.graph2xaxis = Data(8,:);
+%     case 'GPS Satnum'
+%         handles.graph2xaxis = Data(9,:);
+%     case 'GPS Speed'
+%         handles.graph2xaxis = Data(10,:);
+%  end
+%  plot(handles.graph2xaxis, handles.graph2yaxis,'Parent',handles.Graph2);
+% end
 
 % --- Executes during object creation, after setting all properties.
 function graph2xaxis_CreateFcn(hObject, eventdata, handles)
@@ -302,8 +334,35 @@ function graph2yaxis_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns graph2yaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph2yaxis
-
-
+% global ard;
+% if (ard.BytesAvailable<= 0);
+%  str4 = get(hObject,'String');
+%  val4 = get(hObject,'Value');
+%  Data = get(handles.uitable1, 'Data');
+%  switch str4{val4};
+%     case 'Time'
+%         handles.graph2yaxis = Data(1,:);
+%     case 'Pressure Alt.'
+%         handles.graph2yaxis = Data(2,:);
+%     case 'Pitot Speed'
+%         handles.graph2yaxis = Data(3,:);
+%     case 'Temperature'
+%         handles.graph2yaxis = Data(4,:);
+%     case 'Voltage' 
+%         handles.graph2yaxis = Data(5,:);
+%     case 'GPS Latitude'
+%         handles.graph2yaxis = Data(6,:);
+%     case 'GPS Longitude'
+%         handles.graph2yaxis = Data(7,:);
+%     case 'GPS Altitude'
+%         handles.graph2yaxis = Data(8,:);
+%     case 'GPS Satnum'
+%         handles.graph2yaxis = Data(9,:);
+%     case 'GPS Speed'
+%         handles.graph2yaxis = Data(10,:);
+%  end
+%  plot(handles.graph2xaxis, handles.graph2yaxis,'Parent',handles.Graph2);
+% end
 % --- Executes during object creation, after setting all properties.
 function graph2yaxis_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to graph2yaxis (see GCBO)
@@ -458,44 +517,41 @@ function uitable1_CellSelectionCallback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-
-
-
 % --- Executes on selection change in graph1xaxis.
 function graph1xaxis_Callback(hObject, eventdata, handles)
 % hObject    handle to graph1xaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
 % Hints: contents = cellstr(get(hObject,'String')) returns graph1xaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph1xaxis
-% axes(handles.Graph1);
-% str1 = get(hObject,'String');
-% val1 = get(hObject,'Value');
-% switch str1{val1};
+% global ard;
+% if (ard.BytesAvailable<= 0);
+%  str1 = get(hObject,'String');
+%  val1 = get(hObject,'Value');
+%  Data = get(handles.uitable1, 'Data');
+%  switch str1{val1};
 %     case 'Time'
-%         handles.graph1xaxis = handles.time;
+%         handles.graph1xaxis = Data(1,:);
 %     case 'Pressure Alt.'
-%         handles.graph1xaxis = handles.PresAlt;
+%         handles.graph1xaxis = Data(2,:);
 %     case 'Pitot Speed'
-%         handles.graph1xaxis = handles.Pitot_speed;
+%         handles.graph1xaxis = Data(3,:);
 %     case 'Temperature'
-%         handles.graph1xaxis = handles.temp;
+%         handles.graph1xaxis = Data(4,:);
 %     case 'Voltage' 
-%         handles.graph1xaxis = handles.voltage;
+%         handles.graph1xaxis = Data(5,:);
 %     case 'GPS Latitude'
-%         handles.graph1xaxis = handles.GPS_lat;
+%         handles.graph1xaxis = Data(6,:);
 %     case 'GPS Longitude'
-%         handles.graph1xaxis = handles.GPS_long;
+%         handles.graph1xaxis = Data(7,:);
 %     case 'GPS Altitude'
-%         handles.graph1xaxis = handles.GPS_alt;
+%         handles.graph1xaxis = Data(8,:);
 %     case 'GPS Satnum'
-%         handles.graph1xaxis = handles.GPS_satnum;
+%         handles.graph1xaxis = Data(9,:);
 %     case 'GPS Speed'
-%         handles.graph1xaxis = handles.GPS_speed;
-% end
-% guidata(hObject, handles);
-
+%         handles.graph1xaxis = Data(10,:);
+%  end
+%  end
 % --- Executes during object creation, after setting all properties.
 function graph1xaxis_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to graph1xaxis (see GCBO)
@@ -517,32 +573,35 @@ function graph1yaxis_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns graph1yaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph1yaxis
-% axes(handles.Graph1);
-% str1 = get(hObject,'String');
-% val1 = get(hObject,'Value');
-% switch str1{val1};
+% global ard;
+% if (ard.BytesAvailable <= 0);
+%  str2 = get(hObject,'String');
+%  val2 = get(hObject,'Value');
+%  Data = get(handles.uitable1, 'Data');
+%  switch str2{val2};
 %     case 'Time'
-%         handles.graph1yaxis = handles.time;
+%         handles.graph1yaxis = Data(1,:);
 %     case 'Pressure Alt.'
-%         handles.graph1yaxis = handles.PresAlt;
+%         handles.graph1yaxis = Data(2,:);
 %     case 'Pitot Speed'
-%         handles.graph1yaxis = handles.Pitot_speed;
+%         handles.graph1yaxis = Data(3,:);
 %     case 'Temperature'
-%         handles.graph1yaxis = handles.temp;
+%         handles.graph1yaxis = Data(4,:);
 %     case 'Voltage' 
-%         handles.graph1yaxis = handles.voltage;
+%         handles.graph1yaxis = Data(5,:);
 %     case 'GPS Latitude'
-%         handles.graph1yaxis = handles.GPS_lat;
+%         handles.graph1yaxis = Data(6,:);
 %     case 'GPS Longitude'
-%         handles.graph1yaxis = handles.GPS_long;
+%         handles.graph1yaxis = Data(7,:);
 %     case 'GPS Altitude'
-%         handles.graph1yaxis = handles.GPS_alt;
+%         handles.graph1yaxis = Data(8,:);
 %     case 'GPS Satnum'
-%         handles.graph1yaxis = handles.GPS_satnum;
+%         handles.graph1yaxis = Data(9,:);
 %     case 'GPS Speed'
-%         handles.graph1yaxis = handles.GPS_speed;
+%         handles.graph1yaxis = Data(10,:);
+%  end
+%  plot(handles.graph1xaxis, handles.graph1yaxis,'Parent',handles.Graph1);
 % end
-% guidata(hObject, handles);
 
 % --- Executes during object creation, after setting all properties.
 function graph1yaxis_CreateFcn(hObject, eventdata, handles)

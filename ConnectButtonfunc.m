@@ -6,7 +6,8 @@ function [ard] = ConnectButtonfunc(comport, handles)
 %   3. Outputs csvfile log name for reference
 %   4. alsoo outputs timer object for reference
 display ('Connecting ...');
-
+global i;
+i=0;
 delete (instrfind);
 ard = serial(comport);
 set (ard, 'DataBits', 8);
@@ -27,8 +28,9 @@ if (error == false)
 msgbox ('Serial Connected!!,,yah!');  %Indicate connection ws a sucess  
 delete (timerfindall); %Delete all timer objects
 csvfilename = datestr(datetime); %Get date and time for name of new file
-csvfilename = strrep(csvfilename, ':', '_')
+csvfilename = strrep(csvfilename, ':', '_');
 table_filename = csvfilename;
+
 csvfile = fopen(strcat (csvfilename,'.csv'), 'a+'); %Open Csv file, only once we need to do this
 onesecCSVlogger = timer('TimerFcn',{@LoopTimer_1s, ard, csvfile, handles, table_filename},... 
                         'ExecutionMode','fixedRate','Period', 1); 
