@@ -36,7 +36,7 @@ table_filename = csvfilename;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 csvfile = 1; %fuck
 
-onesecCSVlogger = timer('TimerFcn',{@LoopTimer_1s, ard, csvfile, csvfilename, handles, table_filename},... 
+onesecCSVlogger = timer('TimerFcn',{@LTimer_1s, ard, csvfile, csvfilename, handles, table_filename},... 
                         'ExecutionMode','fixedRate','Period', 1); 
 %Call csvlogger function every 1 sec period with ard(Serial port) and csvfilelog (name of csv file) as input 
 start (onesecCSVlogger);
