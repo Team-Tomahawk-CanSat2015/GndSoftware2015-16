@@ -68,8 +68,16 @@ void Transmit_data (){
   toradio += CMD_count;
   toradio += ",";
   toradio += ServoPos;
+
   toradio += ",";
-  toradio += state;
+  toradio += "33";
+  toradio += ",";
+  toradio += "12";
+  toradio += ",";
+  toradio += "12.44";
+  toradio += ",";
+  toradio += "45.44";
+  toradio += ",";
   Serial.println (toradio);
 
 
