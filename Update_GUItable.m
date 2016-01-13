@@ -9,12 +9,12 @@ display(i);
 table_filename = strcat(table_filename, extension);
 % data = csvread(table_filename,0,0,[0 0 i 17]);
 % data = dlmread(table_filename, ',', [0 0 i 12]);
-data = textscan(csvfile, '%s');
+% data = textscan(csvfile, '%s');
 % handles.globalmatrix(i,:) = str2double(data{1}{});
-data = data{1}{1:end}(
 % display(data);
-data = transpose(data(:, 2:11));  
-display('dwad');
+% data = transpose(data(:, 2:11));  
+data = Suicide(csvfile);
+
 Rows = ({'Time','Press. Alt', 'Pitot Spd', 'Temp.', 'Voltage', 'GPS Lat.', 'GPS Long.', 'GPS Alt.',...
             'GPS Satnum.', 'GPS Spd.'});
 
