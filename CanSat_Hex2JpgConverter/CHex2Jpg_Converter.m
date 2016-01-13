@@ -85,9 +85,10 @@ function Convert_Button_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-gocolor = get (handles.Busyindicator, 'BackgroundColor');
-set (handles.Busyindicator, 'String', 'Busy...');
-set (handles.Busyindicator, 'BackgroundColor', 'red');
+gocolor = get (handles.Convert_Button, 'BackgroundColor');
+set (handles.Convert_Button, 'String', 'Busy...');
+set (handles.Convert_Button, 'BackgroundColor', 'red');
+pause (0.5);
 
 Hex2Jpg_Convert(handles, get (handles.HexData, 'String'), get(handles.ImagefileName, 'String'));
 axes (handles.Image);
@@ -95,8 +96,8 @@ show = strcat(get(handles.ImagefileName, 'String'), '.JPG');
 imshow (show);
 
 
- set (handles.Busyindicator, 'BackgroundColor', gocolor);
- set (handles.Busyindicator, 'String', 'Not Busy');
+ set (handles.Convert_Button, 'BackgroundColor', gocolor);
+ set (handles.Convert_Button, 'String', 'Convert');
 
 function HexData_Callback(hObject, eventdata, handles)
 % hObject    handle to HexData (see GCBO)

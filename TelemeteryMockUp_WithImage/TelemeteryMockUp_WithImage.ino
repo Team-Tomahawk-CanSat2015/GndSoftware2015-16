@@ -2,10 +2,10 @@
 #include <SD.h>
 
 File myFile;
+int packet = 0;
 
 void setup() {
-  delay (3000);
-  // Open serial communications and wait for port to open:
+   // Open serial communications and wait for port to open:
   Serial.begin(19200);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
@@ -20,7 +20,15 @@ void setup() {
   if (myFile) {
     //Serial.println("IMAGE");
 
-   int packet = 0;
+
+    for (int g=0; g<10; ++g){
+   Serial.print ("1086,");
+   Serial.print (++packet);
+   Serial.println (",21.1,33.5,434,66,4.33,22,344,34,53,24,5,55,542,4,44,3,");
+      delay (1000);
+      }
+
+   
    
     int seq = -1;
     // read from the file until there's nothing else in it:
@@ -44,7 +52,11 @@ void setup() {
 }
 
 void loop() {
-  // nothing happens after setup
+   Serial.print ("1086,");
+   Serial.print (++packet);
+   Serial.println (",21.1,33.5,434,66,4.33,22,344,34,53,24,5,55,542,4,44,3,");
+      delay (1000);
+      
 }
 
 
