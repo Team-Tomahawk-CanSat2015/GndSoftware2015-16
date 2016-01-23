@@ -21,6 +21,7 @@ handles.y2 = handles.Table_data(j,:);
     
 plot(handles.x1, handles.y1,'Parent', handles.Graph1);
 plot(handles.x2, handles.y2,'Parent', handles.Graph2);
+
 %regression
 % try
 % polyfit(handles.x1, handles.y1, 2);
