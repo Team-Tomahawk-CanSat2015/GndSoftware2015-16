@@ -5,19 +5,23 @@ function [data] = Suicide(csvfile, csvfilename)
 fullcsvfilename  =  strcat (csvfilename, '.csv');
 data = textscan(fopen(fullcsvfilename), '%s');
 data_str = data{1};
-
+n_comma = 14;
 %mat_e = cell2mat (data_str(1));
 t=0; j=0; i=0; k=1;
 [A B] = size(data_str);
-Kappa = ones(A,18);
-
+Kappa = ones(A,n_comma);
+Error =0;
 for i = 1:1:A
 mat_e = cell2mat(data_str(i));
 k = 1; commacount = 0;
-while (k < numel(mat_e) && commacount<18 ) %CHANGE THIS HSIT)
+while (k < numel(mat_e) && commacount<n_comma ) %CHANGE THIS HSIT)
     d = mat_e (k);
-  
-    while (d ~= ',' && commacount<18 )
+    if(isstrprop(d, 'digit')==0 && d~='.')
+       buff = '0';
+       Error = 1;
+    end
+    
+    while (d ~= ',' && commacount<n_comma )
         t = t+1;
         k = k+1;
         d = mat_e(k);    
@@ -26,9 +30,11 @@ while (k < numel(mat_e) && commacount<18 ) %CHANGE THIS HSIT)
     if (d == ',')
            commacount = commacount + 1;
     end
+    
+    if Error == 0
     buff = mat_e(1:k);
     k = k+1;
-    
+    end
 end
 imat = str2num (buff);
 Kappa(i,:) = imat;

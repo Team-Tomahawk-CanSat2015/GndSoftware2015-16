@@ -14,14 +14,22 @@ function [] = Update_GUItable(handles, table_filename, csvfile, csvfilename)
 raw_data = (Suicide(csvfile, csvfilename))'; 
 %This  raw data is also being transposed.
 
-%assign row names
-Rows = ({'Time','Altitude', 'Pressure','Speed',...
-    'Temperature','Voltage','GPS Latitude','GPS Longitude',...
-    'GPS Altitude','GPS Speed','Command Time'});
+% %assign row names
+% Rows = ({'Time','Altitude', 'Pressure','Speed',...
+%     'Temperature','Voltage','GPS Latitude','GPS Longitude',...
+%     'GPS Altitude','GPS Speed','Command Time'});
+% data = raw_data(2:13,:); %useful data that will be plotted
+% handles.Command_Time = data(13,:);
 
-data = raw_data(2:13,:); %useful data that will be plotted
-handles.Command_Time = data(13,:);
+%FOR TESTING PURPOSES
+% number_of_data = str2double(get(handles.commacount, 'String'));
+Rows = ({'Pkt. Count','SatTime', 'Latitude(deg)','Longitude(deg)',...
+    'GPS Velocity','Altitude','Pressure','Temperature',...
+    'x_accel','y_accel','z_accel','x_alpha','y_alpha','z_alpha'});
+data = raw_data(1:14, :);
 %update the handles in the table and format
 set(handles.uitable1, 'Data', data,...
     'RowName', Rows, 'ColumnName', 'numbered');
-display(handles.Command_Time);
+% display(handles.Command_Time);
+
+end
