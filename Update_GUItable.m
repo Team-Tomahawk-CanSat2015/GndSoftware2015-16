@@ -11,8 +11,9 @@ function [] = Update_GUItable(handles, table_filename, csvfile, csvfilename)
 % display(data);
 % data = transpose(data(:, 2:11));  
 
-raw_data = (Suicide(csvfile, csvfilename))'; 
+raw_data = (Suicide(csvfile, csvfilename, 14))'; 
 %This  raw data is also being transposed.
+
 
 % %assign row names
 % Rows = ({'Time','Altitude', 'Pressure','Speed',...
