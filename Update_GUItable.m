@@ -11,23 +11,15 @@ function [] = Update_GUItable(handles, table_filename, csvfile, csvfilename)
 % display(data);
 % data = transpose(data(:, 2:11));  
 
-raw_data = (Suicide(csvfile, csvfilename, 14))'; 
+raw_data = (Suicide(csvfile, csvfilename, 15))'; 
 %This  raw data is also being transposed.
+data = raw_data(2:15,:); %data that will be plotted
 
 
-% %assign row names
-% Rows = ({'Time','Altitude', 'Pressure','Speed',...
-%     'Temperature','Voltage','GPS Latitude','GPS Longitude',...
-%     'GPS Altitude','GPS Speed','Command Time'});
-% data = raw_data(2:13,:); %useful data that will be plotted
-% handles.Command_Time = data(13,:);
-
-%FOR TESTING PURPOSES
-% number_of_data = str2double(get(handles.commacount, 'String'));
-Rows = ({'Pkt. Count','SatTime', 'Latitude(deg)','Longitude(deg)',...
-    'GPS Velocity','Altitude','Pressure','Temperature',...
-    'x_accel','y_accel','z_accel','x_alpha','y_alpha','z_alpha'});
-data = raw_data(1:14, :);
+%assign row names
+Rows = ({'Mission Time','Packet Count','Altitude', 'Pressure','Speed(Pitot)',...
+    'Temperature','Voltage','GPS Latitude','GPS Longitude',...
+    'GPS Altitude','GPS SatNum','GPS Speed','Cmd Time', 'Cmd Count'});
 %update the handles in the table and format
 set(handles.uitable1, 'Data', data,...
     'RowName', Rows, 'ColumnName', 'numbered');

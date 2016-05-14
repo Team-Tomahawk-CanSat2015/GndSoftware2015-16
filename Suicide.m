@@ -5,9 +5,8 @@ function [data] = Suicide(csvfile, csvfilename, n_comma)
 fullcsvfilename  =  strcat (csvfilename, '.csv');
 data = textscan(fopen(fullcsvfilename), '%s');
 data_str = data{1};
-
 %mat_e = cell2mat (data_str(1));
-t=0; j=0; i=0; k=1;
+t=0;
 [A B] = size(data_str);
 Kappa = ones(A,n_comma);
 
