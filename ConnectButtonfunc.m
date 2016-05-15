@@ -5,6 +5,7 @@ function [ard] = ConnectButtonfunc(comport, handles)
 %   2. Creates .CSV file and logs all recived telemetery into it at 1Hz
 %   3. Outputs csvfile log name for reference
 %   4. alsoo outputs timer object for reference
+format long;
 display ('Connecting ...');
 global i;
 i=0;
@@ -40,6 +41,7 @@ onesecCSVlogger = timer('TimerFcn',{@LTimer_1s, ard, csvfile, csvfilename, handl
                         'ExecutionMode','fixedRate','Period', 1); 
 %Call csvlogger function every 1 sec period with ard(Serial port) and csvfilelog (name of csv file) as input 
 start (onesecCSVlogger);
+grid(handles.Graph1, 'on');
 end
 
 
