@@ -11,7 +11,12 @@ function [] = Update_GUItable(handles, table_filename, csvfile, csvfilename)
 % display(data);
 % data = transpose(data(:, 2:11));  
 
-raw_data = (Suicide(csvfile, csvfilename, 15))'; 
+try
+    raw_data = (Suicide(csvfile, csvfilename, 15))'; 
+catch
+    
+end
+
 %This  raw data is also being transposed.
 data = raw_data(2:15,:); %data that will be plotted
 

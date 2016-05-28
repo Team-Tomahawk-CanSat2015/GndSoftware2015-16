@@ -10,60 +10,6 @@ handles.Table_data = get(handles.uitable1,'Data');
 %  p = get(handles.graph2xaxis, 'Value');
 %  j = get(handles.graph2yaxis, 'Value');
 
-%  switch n
-%      case '1'
-%          set(handles.Graph1, 'XLabel', 'Time (sec.)');
-%      case '2'
-%          set(handles.Graph1, 'XLabel', 'Pkt. Count (Packet#)');
-%      case '3'
-%          set(handles.Graph1, 'XLabel', 'Altitude (m)');
-%      case '4'
-%          set(handles.Graph1, 'XLabel', 'Pressure (Pa)');
-%      case '5' 
-%          set(handles.Graph1, 'XLabel', 'Pitot (m/s)');
-%      case '6' 
-%          set(handles.Graph1, 'XLabel', 'Temp. (C)');
-%      case '7'
-%          set(handles.Graph1, 'XLabel', 'Voltage (V)');
-%      case '8' 
-%          set(handles.Graph1, 'XLabel', 'Latitude');
-%      case '9'
-%          set(handles.Graph1, 'XLabel', 'Longitude');
-%      case '10'
-%          set(handles.Graph1, 'XLabel', 'GPS Altitude (m)');
-%      case '11'
-%          set(handles.Graph1, 'XLabel', 'SatNum (#)');
-%      case '12'
-%          set(handles.Graph1, 'XLabel', 'GPS Speed (m/s)');
-%  end 
-%  
-%   switch k
-%      case '1'
-%          set(handles.Graph1, 'YLabel', 'Time (sec.)');
-%      case '2'
-%          set(handles.Graph1, 'YLabel', 'Pkt. Count (Packet#)');
-%      case '3'
-%          set(handles.Graph1, 'YLabel', 'Altitude (m)');
-%      case '4'
-%          set(handles.Graph1, 'YLabel', 'Pressure (Pa)');
-%      case '5' 
-%          set(handles.Graph1, 'YLabel', 'Pitot (m/s)');
-%      case '6' 
-%          set(handles.Graph1, 'YLabel', 'Temp. (C)');
-%      case '7'
-%          set(handles.Graph1, 'YLabel', 'Voltage (V)');
-%      case '8' 
-%          set(handles.Graph1, 'YLabel', 'Latitude');
-%      case '9'
-%          set(handles.Graph1, 'YLabel', 'Longitude');
-%      case '10'
-%          set(handles.Graph1, 'YLabel', 'GPS Altitude (m)');
-%      case '11'
-%          set(handles.Graph1, 'YLabel', 'SatNum (#)');
-%      case '12'
-%          set(handles.Graph1, 'YLabel', 'GPS Speed (m/s)');
-%  end 
- 
 %assign a new handles to a selected row of data from table based on the
 %selections above
 handles.x1 = handles.Table_data(n,:);

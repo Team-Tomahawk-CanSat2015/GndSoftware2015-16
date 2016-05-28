@@ -35,7 +35,7 @@ csvfilename = datestr(datetime); %Get date and time for name of new file
 csvfilename = strrep(csvfilename, ':', '_');
 table_filename = csvfilename;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-csvfile = 1; %fuck
+csvfile = 1; %does nothing simply there for fun
 
 onesecCSVlogger = timer('TimerFcn',{@LTimer_1s, ard, csvfile, csvfilename, handles, table_filename},... 
                         'ExecutionMode','fixedRate','Period', 1); 

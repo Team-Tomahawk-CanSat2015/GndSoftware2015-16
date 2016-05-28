@@ -11,8 +11,10 @@ t=0;
 Kappa = ones(A,n_comma);
 
 for i = 1:1:A
-mat_e = cell2mat(data_str(i));
+mat_e = cell2mat(data_str(i))
 k = 1; commacount = 0;
+
+try
 while (k < numel(mat_e) && commacount<n_comma ) %CHANGE THIS HSIT)
     d = mat_e (k);
     while (d ~= ',' && commacount<n_comma )
@@ -30,6 +32,8 @@ end
 imat = str2num (buff);
 Kappa(i,:) = imat;
 data = Kappa;
+catch
+end
 end
 
 end
