@@ -1,9 +1,8 @@
-function [data] = Suicide(csvfile, csvfilename, n_comma)
+function [data] = Manual_Suicide(csvfile, csvfilename, n_comma)
 
 %  fclose ('all');
 %  csvfile = fopen('22-Dec-2015 18_02_35.csv');
-fullcsvfilename  =  strcat (csvfilename, '.csv');
-data = textscan(fopen(fullcsvfilename), '%s');
+data = textscan(fopen(csvfilename), '%s');
 data_str = data{1};
 %mat_e = cell2mat (data_str(1));
 t=0;

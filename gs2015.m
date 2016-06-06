@@ -22,7 +22,7 @@ function varargout = gs2015(varargin)
 
 % Edit the above text to modify the response to help gs2015
 
-% Last Modified by GUIDE v2.5 19-Dec-2015 14:29:26
+% Last Modified by GUIDE v2.5 05-Jun-2016 20:49:25
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -280,6 +280,8 @@ function graph2xaxis_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+
+
 % Hints: contents = cellstr(get(hObject,'String')) returns graph2xaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph2xaxis
 % global ard;
@@ -444,6 +446,7 @@ function uipanel2_ButtonDownFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 ScanCOMPorts(handles);
+Scan_csv_Files(handles);
 
 
 % --- Executes during object deletion, before destroying properties.
@@ -521,6 +524,9 @@ function graph1xaxis_Callback(hObject, eventdata, handles)
 % hObject    handle to graph1xaxis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+ 
+
 % Hints: contents = cellstr(get(hObject,'String')) returns graph1xaxis contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from graph1xaxis
 % global ard;
@@ -605,6 +611,37 @@ function graph1yaxis_Callback(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function graph1yaxis_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to graph1yaxis (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in Plot_from_File.
+function Plot_from_File_Callback(hObject, eventdata, handles)
+% hObject    handle to Plot_from_File (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+manual_plot_function(handles);
+
+
+% --- Executes on selection change in csv_list.
+function csv_list_Callback(hObject, eventdata, handles)
+% hObject    handle to csv_list (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+Scan_csv_Files(handles);
+% Hints: contents = cellstr(get(hObject,'String')) returns csv_list contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from csv_list
+
+
+% --- Executes during object creation, after setting all properties.
+function csv_list_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to csv_list (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 

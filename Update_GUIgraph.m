@@ -19,7 +19,7 @@ handles.y1 = handles.Table_data(k,:);
 
 %plot in figure labelled Graph 1 and Graph 2
 
-plot(handles.x1, handles.y1,'Parent', handles.Graph1);
+plot(handles.x1, handles.y1,'.','Parent', handles.Graph1);
 grid(handles.Graph1, 'on');
 % plot(handles.x2, handles.y2,'Parent', handles.Graph2);
 %regression
@@ -33,5 +33,5 @@ grid(handles.Graph1, 'on');
 % plot(handles.x2, quad_regr, 'Parent', handles.Graph2);
 % catch
 % end
-
+fclose('all'); %Close all open files
 end
