@@ -32,6 +32,7 @@ imat = str2num (buff);
 Kappa(i,:) = imat;
 data = Kappa;
 catch
+    Kappa(i,:) = Kappa(i-1,:);
 end
 end
 
