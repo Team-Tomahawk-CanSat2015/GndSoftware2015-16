@@ -22,7 +22,7 @@ function varargout = CHex2Jpg_Converter(varargin)
 
 % Edit the above text to modify the response to help CHex2Jpg_Converter
 
-% Last Modified by GUIDE v2.5 11-Jun-2016 10:24:15
+% Last Modified by GUIDE v2.5 11-Jun-2016 00:35:36
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -59,7 +59,7 @@ handles.output = hObject;
 guidata(hObject, handles);
 
 
-axes (handles.axes3);
+axes (handles.logo);
 imshow ('Team_Tomahawk_logo.JPG');
 axes (handles.Image);
 imshow ('Team_Tomahawk_logo.JPG');
@@ -152,17 +152,18 @@ function Help_Callback(hObject, eventdata, handles)
 
 
 
-function csv_files_Callback(hObject, eventdata, handles)
-% hObject    handle to csv_files (see GCBO)
+function csv_filename_Callback(hObject, eventdata, handles)
+% hObject    handle to csv_filename (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of csv_files as text
-%        str2double(get(hObject,'String')) returns contents of csv_files as a double
+% Hints: get(hObject,'String') returns contents of csv_filename as text
+%        str2double(get(hObject,'String')) returns contents of csv_filename as a double
+
 
 % --- Executes during object creation, after setting all properties.
-function csv_files_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to csv_files (see GCBO)
+function csv_filename_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to csv_filename (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -178,124 +179,10 @@ function Fill_hex_field_Callback(hObject, eventdata, handles)
 % hObject    handle to Fill_hex_field (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-csv_string = get(handles.csv_files, 'String');
-csv_value = get(handles.csv_files, 'Value');
-csv_name = csv_string{csv_value};
+csv_name = get(handles.csv_filename, 'String');
 convert_me = sprintf(Suicide(1, csv_name, 15, handles));
-id = fopen('hex_data.txt')
+id = fopen('hex_data.txt');
 line = fscanf(id, '%s');
 set(handles.HexData, 'String', line);
-fclose('all');
 
 
-
-
-
-function Hex_Data_Callback(hObject, eventdata, handles)
-% hObject    handle to Hex_Data (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of Hex_Data as text
-%        str2double(get(hObject,'String')) returns contents of Hex_Data as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function Hex_Data_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Hex_Data (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-
-function edit6_Callback(hObject, eventdata, handles)
-% hObject    handle to HexData (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of HexData as text
-%        str2double(get(hObject,'String')) returns contents of HexData as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function edit6_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to HexData (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-% --- Executes on button press in pushbutton4.
-function pushbutton4_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-
-function edit7_Callback(hObject, eventdata, handles)
-% hObject    handle to edit7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit7 as text
-%        str2double(get(hObject,'String')) returns contents of edit7 as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function edit7_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-% --- Executes on key press with focus on csv_files and none of its controls.
-function csv_files_KeyPressFcn(hObject, eventdata, handles)
-% hObject    handle to csv_files (see GCBO)
-% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)
-%	Key: name of the key that was pressed, in lower case
-%	Character: character interpretation of the key(s) that was pressed
-%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
-% handles    structure with handles and user data (see GUIDATA)
-
-
-
-% --- If Enable == 'on', executes on mouse press in 5 pixel border.
-% --- Otherwise, executes on mouse press in 5 pixel border or over csv_files.
-Scan_csv_Files(handles);
-% hObject    handle to csv_files (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --------------------------------------------------------------------
-function uipanel4_ButtonDownFcn(hObject, eventdata, handles)
-% hObject    handle to uipanel4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-Scan_csv_Files(handles);
-
-
-% --- If Enable == 'on', executes on mouse press in 5 pixel border.
-% --- Otherwise, executes on mouse press in 5 pixel border or over csv_files.
-function csv_files_ButtonDownFcn(hObject, eventdata, handles)
-% hObject    handle to csv_files (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)

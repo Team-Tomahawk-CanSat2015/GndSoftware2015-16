@@ -5,7 +5,7 @@ value = get(handles.csv_list, 'Value');
 file_list = get(handles.csv_list, 'String');
 csvfilename = file_list{value};
 
-raw_data = (Manual_Suicide(csvfile, csvfilename, 15))'; 
+raw_data = (Manual_Suicide(csvfile, csvfilename, 15))'
 
 %This  raw data is also being transposed.
 data = raw_data(2:15,:); %data that will be plotted

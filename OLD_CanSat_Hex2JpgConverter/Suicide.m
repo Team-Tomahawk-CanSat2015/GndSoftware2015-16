@@ -2,13 +2,13 @@ function [data] = Suicide(csvfile, csvfilename, n_comma, handles)
 
 %  fclose ('all');
 %  csvfile = fopen('22-Dec-2015 18_02_35.csv');
-% fullcsvfilename  =  strcat (csvfilename, '.csv');
-data = textscan(fopen(csvfilename), '%s');
+fullcsvfilename  =  strcat (csvfilename, '.csv');
+data = textscan(fopen(fullcsvfilename), '%s');
 data_str = data{1};
 %mat_e = cell2mat (data_str(1));
 t=0;
 [A B] = size(data_str);
-fileID = fopen('hex_data.txt' , 'w');
+fileID = fopen('hex_data.txt' , 'w')
 for i = 1:1:A
 mat_e = cell2mat(data_str(i));
 k = 1; commacount = 0;
